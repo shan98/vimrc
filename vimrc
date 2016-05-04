@@ -15,6 +15,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-rooter'
 Plugin 'henrik/vim-qargs'
+Plugin 'bkad/CamelCaseMotion'
+Plugin 'tpope/vim-surround'
 
 call vundle#end()
 filetype plugin indent on    " required
@@ -53,7 +55,7 @@ set si "Smart indent
 set cursorline
 autocmd WinEnter * setlocal cursorline
 autocmd WinLeave * setlocal nocursorline
-hi CursorLine   cterm=NONE ctermbg=darkgrey guibg=black
+hi CursorLine   cterm=NONE ctermbg=darkgrey guibg=black 
 colorscheme alduin
 
 " Auto remove trailing white space
@@ -68,7 +70,7 @@ autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
      \   exe "normal! g`\"" |
      \ endif
-
+     
 " Remember info about open buffers on close
 set viminfo^=%
 
@@ -108,3 +110,13 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 
 " Rooter config
 let g:rooter_patterns = ['Rakefile', '.git/']
+
+" CamelCaseMotion config
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> b <Plug>CamelCaseMotion_b
+map <silent> e <Plug>CamelCaseMotion_e
+map <silent> ge <Plug>CamelCaseMotion_ge
+sunmap w
+sunmap b
+sunmap e
+sunmap ge
